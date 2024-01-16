@@ -17,7 +17,7 @@ export function Model(props) {
     const { autoRotate, shadow, ...config } = useControls({
         backside: true,
         backsideThickness: { value: 0.3, min: 0, max: 2 },
-        samples: { value: 24, min: 1, max: 32, step: 1 },
+        samples: { value: 12, min: 1, max: 32, step: 1 },
         resolution: { value: 1024, min: 64, max: 2048, step: 64 },
         transmission: { value: 1, min: 0, max: 1 },
         clearcoat: { value: 0, min: 0.1, max: 1 },
@@ -34,9 +34,8 @@ export function Model(props) {
     })
 
     useEffect(() => {
-        gsap.fromTo(ref.current.position, { x: 10 }, { x: 0, ease: 'power4.inOut', duration: 3.5, delay: 1, onComplete: () => setInitialAnimationDone(true) })
-        gsap.fromTo(ref.current.rotation, { y: 6, z: 0 }, { y: 0.4, z: 0.4, ease: 'power4.inOut', duration: 3.5, delay: 1 })
-
+        gsap.to(ref.current.position, { x: 0, ease: 'power4.inOut', duration: 3.5, delay: 1, onComplete: () => setInitialAnimationDone(true) })
+        gsap.to(ref.current.rotation, { y: 0.4, z: 0.4, ease: 'power4.inOut', duration: 3.5, delay: 1 })
     }, [])
 
     useFrame(({ clock, mouse }) => {
@@ -45,8 +44,8 @@ export function Model(props) {
             ref.current.position.x = gsap.utils.interpolate(ref.current.position.x, mouse.x * 0.3, 0.01)
             ref.current.position.y = gsap.utils.interpolate(ref.current.position.y, mouse.y * 0.3, 0.01)
 
-            ref.current.rotation.x = gsap.utils.interpolate(ref.current.rotation.x, (mouse.y * 0.3) + 0.2, 0.01)
-            ref.current.rotation.y = gsap.utils.interpolate(ref.current.rotation.y, (mouse.x * 0.3) + 0.2, 0.01)
+            ref.current.rotation.x = gsap.utils.interpolate(ref.current.rotation.x, (mouse.y * 0.1) + 0.2, 0.01)
+            ref.current.rotation.y = gsap.utils.interpolate(ref.current.rotation.y, (mouse.x * 0.5) + 0.2, 0.01)
 
         }
 
@@ -55,7 +54,7 @@ export function Model(props) {
 
     return (
         <group  {...props} dispose={null}>
-            <mesh ref={ref} castShadow receiveShadow geometry={nodes.newskool.geometry} material={materials.Material} position={[0, 0, 0.402]}>
+            <mesh rotation={[0, 6, 0]} ref={ref} castShadow receiveShadow geometry={nodes.newskool.geometry} material={materials.Material} position={[10, 0, 0.402]}>
                 <MeshTransmissionMaterial {...config} />
             </mesh>
         </group>

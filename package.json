@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@gsap/react": "^2.0.2",
     "@react-three/drei": "9.65.5",
     "@react-three/fiber": "8.12.2",
     "@react-three/postprocessing": "2.7.1",
+    "@studio-freight/lenis": "^1.0.33",
+    "@studio-freight/react-lenis": "^0.0.43",
     "@types/three": "0.150.2",
     "gsap": "^3.12.4",
     "leva": "0.9.34",
