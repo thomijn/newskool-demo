@@ -8,7 +8,7 @@ import ReactLenis from '@studio-freight/react-lenis'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ReactLenis root>
-      <ImageScrollAnimation />
+      <App />
     </ReactLenis>
   </React.StrictMode>,
 )
