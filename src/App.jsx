@@ -14,7 +14,7 @@ export default function App() {
       <Canvas style={{ borderRadius: 20 }} camera={{ position: [0, 0, 9], fov: 35 }}>
         <color attach="background" args={['#000']} />
         <Float
-        enabled={false}
+          enabled={false}
           speed={2}
           rotationIntensity={2}
           floatIntensity={0.5}
@@ -31,7 +31,6 @@ export default function App() {
           </group>
         </Environment>
         <NewSkoolText />
-        <OrbitControls />
       </Canvas>
       <Leva collapsed hidden />
     </main>
@@ -42,11 +41,11 @@ const NewSkoolText = () => {
   const ref = useRef();
 
   useEffect(() => {
-   // animate opacity and z position of text
-    gsap.fromTo(ref.current.material, { opacity: 0 }, { opacity: 1, ease: 'power4.inOut', duration: 1, delay: 2.5 })  
+    // animate opacity and z position of text
+    gsap.fromTo(ref.current.material, { opacity: 0 }, { opacity: 1, ease: 'power4.inOut', duration: 1, delay: 2.5 })
     gsap.fromTo(ref.current.position, { z: -1.5 }, { z: -1, ease: 'power4.inOut', duration: 1, delay: 2.5 })
   }, [])
-  
+
 
   return (
     <Text ref={ref} letterSpacing={0.08} fontSize={2} position={[0, 0, -1.5]} rotation={[0, Math.PI * 0, 0]} font={'/BebasNeue-Regular.ttf'}>

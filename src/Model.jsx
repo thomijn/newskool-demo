@@ -8,6 +8,7 @@ import { useControls } from 'leva'
 import { useFrame, useLoader } from '@react-three/fiber'
 import { RGBELoader } from 'three-stdlib'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 export function Model(props) {
     const texture = useLoader(RGBELoader, 'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/aerodynamics_workshop_1k.hdr')
@@ -33,7 +34,7 @@ export function Model(props) {
         color: '#78fbec',
     })
 
-    useEffect(() => {
+    useGSAP(() => {
         gsap.to(ref.current.position, { x: 0, ease: 'power4.inOut', duration: 3.5, delay: 1, onComplete: () => setInitialAnimationDone(true) })
         gsap.to(ref.current.rotation, { y: 0.4, z: 0.4, ease: 'power4.inOut', duration: 3.5, delay: 1 })
     }, [])
